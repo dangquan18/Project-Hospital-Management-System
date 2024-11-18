@@ -1,0 +1,36 @@
+
+HBox {
+    -fx-background-color: #FFFFFF;
+    -fx-padding: 0px;
+    -fx-spacing: 10px;
+}
+
+TextField {
+    -fx-border-radius: 15px;
+    -fx-background-color: #FFFFFF;
+    -fx-border-color: #D1D1D1;
+    -fx-prompt-text-fill: #999999;
+    -fx-font-size: 14px;
+    -fx-text-fill: #333333;
+}
+
+Button {
+    -fx-background-color: linear-gradient(to bottom right, #188ba7, #306090); /* Màu nền cho nút đăng xuất */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 5px 20px;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+}
+
+Button:hover {
+    -fx-background-color: #E64A19; /* Màu nền khi hover */
+}
+
+ImageView {
+    -fx-cursor: hand;
+}
+
+ImageView:hover {
+    -fx-opacity: 0.8;
+}

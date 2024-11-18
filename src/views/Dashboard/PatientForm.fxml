@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PatientController" >
+    <left>
+        <fx:include source="../Sidebar.fxml" />
+    </left>
+    <center>
+        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="TOP_CENTER">
+            <!-- Phần Header -->
+            <fx:include source="../Header.fxml" />
+
+            <HBox style="-fx-background-color: #FFFFFF">
+                <children>
+
+                    <!-- Thêm tiêu đề cho bảng -->
+                    <Label prefHeight="56.0" prefWidth="500" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-padding: 10px;-fx-background-color: #FFFFFF;" text="Doctors" />
+                    <Button  fx:id="addPatientButton" onAction="#senseAddForm" prefHeight="36.0" prefWidth="200" styleClass="navbar-button" text="Add Patient" stylesheets="@/resources/MainDoctor.css"  >
+                        <graphic>
+                            <ImageView fitHeight="20" fitWidth="20" preserveRatio="true">
+                                <image>
+                                    <Image url="@/add.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+
+                    </Button>
+                </children>
+            </HBox>
+
+
+            <!-- Phần TableView hiển thị danh sách bác sĩ -->
+            <AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF"  VBox.vgrow="ALWAYS">
+                <TableView fx:id="PatientTableView" prefHeight="600.0" prefWidth="1200.0" stylesheets="@/resources/MainDoctor.css" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="patients_col_patientID" text="Patient ID" prefWidth="200.0" />
+                        <TableColumn fx:id="patients_col_name" text="Name" prefWidth="200.0" />
+                        <TableColumn fx:id="patients_col_age" text="Age" prefWidth="200.0" />
+                        <TableColumn fx:id="patients_col_contactNumber" text="Contact Number" prefWidth="200.0" />
+                        <TableColumn fx:id="patients_col_email" text="Email" prefWidth="200.0" />
+                        <TableColumn fx:id="patients_col_action" text="Action" prefWidth="250.0" />
+                    </columns>
+                </TableView>
+            </AnchorPane>
+
+
+        </VBox>
+    </center>
+</BorderPane>

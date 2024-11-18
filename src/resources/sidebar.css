@@ -1,0 +1,57 @@
+/* Phong cách sidebar hiện đại */
+VBox {
+
+    ; /* Màu nền trắng */
+    -fx-padding: 20px 20px 0 20px; /* Padding xung quanh, không có padding dưới cùng */
+    -fx-spacing: 15px; /* Khoảng cách giữa các phần tử trong VBox */
+    -fx-alignment: TOP_LEFT; /* Căn chỉnh các phần tử từ trên xuống */
+    -fx-border-radius: 10px; /* Bo góc nhẹ cho VBox */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0.0, 0, 5); /* Đổ bóng nhẹ cho VBox */
+}
+
+Label {
+    -fx-text-fill: #333333; /* Màu chữ xám đậm */
+    -fx-font-family: 'Arial';
+    -fx-font-size: 24px;
+    -fx-font-weight: bold; /* Chữ đậm */
+}
+
+Button {
+    -fx-background-color: transparent; /* Xóa màu nền */
+    -fx-text-fill: #333333; /* Màu chữ đen */
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-border-color: transparent; /* Xóa viền */
+    -fx-padding: 10px 15px;
+    -fx-background-radius: 5px; /* Bo góc nhẹ cho nút */
+    -fx-cursor: hand; /* Con trỏ chuột thành dạng tay */
+    -fx-transition: background-color 0.3s, color 0.3s; /* Thêm hiệu ứng chuyển động khi hover */
+    -fx-min-width: 150px; /* Đảm bảo nút có đủ rộng để chứa chữ */
+    -fx-max-width: 200px; /* Đảm bảo không bị co lại khi kích thước nhỏ */
+    -fx-text-alignment: CENTER; /* Căn giữa chữ trong nút */
+}
+
+Button:hover {
+    -fx-background-color: #4C8BF5; /* Màu nền xanh dương khi hover */
+    -fx-text-fill: #FFFFFF; /* Màu chữ trắng khi hover */
+    -fx-background-radius: 5px; /* Bo góc nhẹ khi hover */
+}
+
+ImageView {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 8, 0.0, 0, 2); /* Đổ bóng nhẹ cho icon */
+    -fx-background-radius: 5px; /* Bo góc cho ảnh */
+}
+
+HBox {
+    -fx-spacing: 20px; /* Khoảng cách giữa icon và nút */
+    -fx-padding: 5px 0;
+    -fx-alignment: CENTER_LEFT; /* Đảm bảo căn giữa các phần tử trong HBox */
+}
+
+HBox > ImageView {
+    -fx-padding-right: 10px; /* Khoảng cách giữa icon và button */
+}
+
+VBox > HBox:last-child {
+    -fx-padding-bottom: 0; /* Xóa padding dưới cùng của HBox cuối cùng */
+}

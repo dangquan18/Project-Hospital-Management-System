@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AppointmentController">
+    <left>
+        <fx:include source="../Sidebar.fxml" />
+    </left>
+    <center>
+        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="TOP_CENTER">
+            <!-- Phần Header -->
+            <fx:include source="../Header.fxml" />
+
+            <!-- Thêm tiêu đề cho bảng -->
+            <Label prefHeight="56.0" prefWidth="1300.0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-padding: 10px;-fx-background-color: #FFFFFF;" text="Appoitment" />
+
+            <!-- Phần TableView hiển thị danh sách bác sĩ -->
+            <AnchorPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF" VBox.vgrow="ALWAYS">
+                <TableView fx:id="appointmentTableView" prefHeight="600.0" prefWidth="1200.0" stylesheets="@/resources/MainDoctor.css" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="appointment_col_id" prefWidth="100.0" text="Appointment ID" />
+                        <TableColumn fx:id="appointment_col_patientName" prefWidth="150.0" text="Patient Name" />
+                        <TableColumn fx:id="appointment_col_doctorName" prefWidth="200.0" text="Doctor Name" />
+                        <TableColumn fx:id="appointment_col_symptoms" prefWidth="150.0" text="Symptoms" />
+                        <TableColumn fx:id="appointment_col_specialty" prefWidth="200.0" text="Specialty" />
+                        <TableColumn fx:id="appointment_col_scheduledtime" prefWidth="150.0" text="Scheduled Time" />
+                        <TableColumn fx:id="doctors_col_action" prefWidth="300.0" text="Action" />
+                    </columns>
+                </TableView>
+            </AnchorPane>
+            <BorderPane.margin>
+                <Insets />
+            </BorderPane.margin>
+
+        </VBox>
+    </center>
+</BorderPane>

@@ -1,0 +1,63 @@
+/* Toàn bộ giao diện */
+.root {
+    -fx-font-family: 'Segoe UI', sans-serif;
+    -fx-background-color: #f4f4f4; /* Nền tổng thể */
+}
+
+/* Header */
+.header {
+    -fx-background-color: #15b392; /* Màu nền cho header */
+    -fx-padding: 10;
+}
+
+.header-label {
+    -fx-font-size: 35; /* Kích thước chữ cho tiêu đề */
+    -fx-text-fill: white; /* Màu chữ cho tiêu đề */
+    -fx-font-weight: bold;
+}
+
+.search-field {
+    -fx-background-color: white; /* Nền trắng cho ô tìm kiếm */
+    -fx-border-color: #73ec8b; /* Màu viền cho ô tìm kiếm */
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+    -fx-padding: 5 70 5 20 ;
+}
+
+.search-field:focused {
+    -fx-border-color: #ffcc00;
+    -fx-effect: dropshadow(gaussian, rgba(210, 255, 0, 0.5), 5, 0.0, 0, 0);
+}
+
+.search-field::placeholder {
+    -fx-opacity: 0.7; /* Độ mờ cho placeholder */
+}
+
+/* Navbar */
+.navbar {
+    -fx-background-color: #15b392; /* Màu nền cho navbar */
+    -fx-padding: 3;
+    -fx-alignment: center;
+    -fx-spacing: 5;
+}
+
+.navbar-button {
+    -fx-background-color: transparent; /* Nền trong suốt */
+    -fx-text-fill: white;
+    -fx-font-size: 14;
+    -fx-padding: 8 15;
+    -fx-cursor: hand;
+}
+
+.navbar-button:hover {
+    -fx-background-color: #d2ff72; /* Màu nền khi hover */
+    -fx-text-fill: black;
+}
+
+.navbar-button:pressed {
+    -fx-background-color: #54c392; /* Màu nền khi nhấn */
+}
+
+.separator {
+    -fx-background-color: #ccc; /* Màu vạch ngăn cách */
+}

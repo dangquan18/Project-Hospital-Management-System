@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+
+<AnchorPane prefHeight="955.0" prefWidth="300" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SidebarController">
+    <VBox alignment="TOP_CENTER" prefHeight="955" prefWidth="300.0" spacing="15" stylesheets="@/resources/sidebar.css" BorderPane.alignment="CENTER">
+        <padding>
+            <Insets left="20.0" right="20.0" top="20.0" />
+        </padding>
+        <children>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                <children>
+                    <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Hospital Management">
+                        <font>
+                            <Font name="Arial" size="24.0" />
+                        </font>
+                    </Label>
+                </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                <children>
+                    <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@/resources/icon_app.png" />
+                        </image>
+                    </ImageView>
+                </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="200.0" spacing="20.0">
+                <children>
+                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@/resources/dashboard-icon-2048x2048-smbjyr2w.png" />
+                        </image>
+                    </ImageView>
+                    <Button  fx:id="dashboardButton" alignment="TOP_CENTER"  mnemonicParsing="false" prefWidth="130.0" style="-fx-font-size: 14px;" text="Dashboard" />
+                </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="200.0" spacing="20.0">
+                <children>
+                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@/resources/male-doctor.1024x1022.png" />
+                        </image>
+                    </ImageView>
+                    <Button fx:id="doctorsButton" alignment="TOP_CENTER" minWidth="139.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="139.0" style="-fx-font-size: 14px;" text="Doctors" />
+                </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="200.0" spacing="20.0">
+                <children>
+                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@/resources/user-injured.896x1024.png" />
+                        </image>
+                    </ImageView>
+                    <Button fx:id="patientsButton" minWidth="134.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="134.0" style="-fx-font-size: 14px;" text="Patients" />
+                </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="200.0" spacing="20.0">
+                <children>
+                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@/resources/calendar.483x512.png" />
+                        </image>
+                    </ImageView>
+                    <Button fx:id="appointmentButton" mnemonicParsing="false" prefWidth="130.0" style="-fx-font-size: 14px;" text="Appointment" />
+                </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="200.0" spacing="20.0">
+                <children>
+                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@/resources/medical-notes.768x1024.png" />
+                        </image>
+                    </ImageView>
+                    <Button fx:id="medicalRecordsButton" mnemonicParsing="false" prefWidth="130.0" style="-fx-font-size: 14px;" text="Medical Records" />
+                </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="200.0" spacing="20.0">
+                <children>
+                    <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                        <image>
+                            <Image url="@/resources/male-doctor.1024x1022.png" />
+                        </image>
+                    </ImageView>
+                    <Button fx:id="doctorHistoryButton" mnemonicParsing="false" prefWidth="130.0" style="-fx-font-size: 14px;" text="Doctor History" />
+                </children>
+            </HBox>
+        </children>
+    </VBox>
+</AnchorPane>

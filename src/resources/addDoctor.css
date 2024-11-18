@@ -1,0 +1,39 @@
+VBox {
+    -fx-background-color: white;
+    -fx-padding: 20;
+    -fx-border-color: linear-gradient(to bottom right, #188ba7, #306090);
+    -fx-border-width: 2;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+
+.label {
+    -fx-text-fill: linear-gradient(to bottom right, #188ba7, #306090);
+    -fx-font-size: 30;
+    -fx-font-weight: bold;
+}
+
+
+.text-field {
+    -fx-prompt-text-fill:linear-gradient(to bottom right, #188ba7, #306090);
+    -fx-text-fill: linear-gradient(to bottom right, #188ba7, #306090);
+    -fx-background-color:white;
+    -fx-border-color: linear-gradient(to bottom right, #188ba7, #306090);
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-font-size: 18;
+}
+
+/* Button */
+.button {
+    -fx-background-color: linear-gradient(to bottom right, #188ba7, #306090);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-font-size: 20;
+}
+
+.button:hover {
+    -fx-background-color: #388e3c;
+}

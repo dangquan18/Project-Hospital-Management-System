@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="55  " prefWidth="1300" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HeaderController">
+    <children>
+            <HBox alignment="CENTER_LEFT"  prefHeight="55.0" prefWidth="1235" stylesheets="@../resources/Header.css">
+                <children>
+                    <!-- Phần căn trái, có thể chứa logo hoặc tên ứng dụng -->
+                    <Pane prefHeight="55.0" prefWidth="255.0" HBox.hgrow="ALWAYS" />
+
+                    <!-- Thanh tìm kiếm -->
+                    <HBox alignment="CENTER" maxHeight="-Infinity" prefHeight="35.0" prefWidth="250.0" spacing="10.0">
+                        <children>
+                            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@/resources/search.512x512.png" />
+                                </image>
+                            </ImageView>
+                            <TextField prefHeight="31.0" prefWidth="210.0" promptText="Search" />
+                        </children>
+                    </HBox>
+
+                    <!-- Icon thông báo -->
+                    <HBox alignment="CENTER" spacing="20.0">
+                        <children>
+                            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@/resources/bell.440x512.png" />
+                                </image>
+                            </ImageView>
+                        </children>
+                    </HBox>
+
+                    <!-- Avatar người dùng -->
+                    <HBox alignment="CENTER" spacing="20.0">
+                        <children>
+                            <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@/resources/user-avatar.512x512.png" />
+                                </image>
+                            </ImageView>
+                        </children>
+                    </HBox>
+
+                    <!-- Nút đăng xuất -->
+                    <HBox alignment="CENTER" spacing="20.0" >
+                        <children>
+                            <Button mnemonicParsing="false" text="Log out"  onAction="#handleLogout"/>
+                        </children>
+                    </HBox>
+                </children>
+            </HBox>
+    </children>
+</AnchorPane>

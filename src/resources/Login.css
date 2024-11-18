@@ -1,0 +1,53 @@
+/* Đặt nền chung cho toàn bộ BorderPane */
+/* Căn giữa VBox và điều chỉnh kích thước */
+
+
+/* Định dạng cho tiêu đề */
+
+
+/* Định dạng cho các trường nhập liệu */
+/* Đặt chiều rộng cho các vùng nhập */
+.input-field {
+    -fx-pref-width: 250px; /* Đặt chiều rộng theo ý muốn */
+    -fx-pref-height: 40px; /* Đặt chiều cao theo ý muốn */
+    -fx-padding: 5px; /* Khoảng cách bên trong */
+    -fx-background-radius: 5px; /* Bo tròn góc */
+    -fx-border-color: #A5D6A7; /* Đường viền màu xanh lá nhạt */
+    -fx-border-radius: 5px;
+    -fx-border-width: 1px;
+     -fx-opacity: 0.8; /* Đặt độ trong suốt (0.0 đến 1.0) */
+
+}
+
+
+/* Khi người dùng focus vào trường nhập liệu */
+.input-field:focused {
+    -fx-border-color: #66bb6a; /* Màu xanh lá sáng hơn khi focus */
+}
+
+/* Định dạng cho nút đăng nhập */
+.login-button {
+    -fx-background-color: #66bb6a; /* Màu nền xanh lá */
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-pref-width: 100px;
+    -fx-pref-height: 40px;
+    -fx-cursor: hand;
+}
+
+/* Hiệu ứng hover cho nút đăng nhập */
+.login-button:hover {
+    -fx-background-color: #4caf50; /* Màu xanh lá đậm hơn khi hover */
+}
+
+/* Hiệu ứng khi nhấn vào nút */
+.login-button:pressed {
+    -fx-background-color: #388e3c; /* Màu xanh lá rất đậm khi nhấn */
+}
+
+/* Đặt hình nền cho BorderPane */
+.border-pane-background {
+
+}
