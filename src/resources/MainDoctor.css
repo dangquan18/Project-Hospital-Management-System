@@ -27,7 +27,7 @@ Button {
 .navbar-button {
     -fx-background-color: transparent; /* Xóa màu nền */
     -fx-text-fill: #333333; /* Màu chữ đen */
-    -fx-font-size: 20px;
+    -fx-font-size: 15px;
     -fx-font-weight: bold;
     -fx-border-color: transparent; /* Xóa viền */
     -fx-padding: 10px 15px;

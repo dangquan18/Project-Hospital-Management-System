@@ -3,24 +3,28 @@ package model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.sql.*;
+import utils.DatabaseConnection;
 
 public class Doctor {
 
     private int id;
     private String name;
-    private String specialty;
+    private int specialtyID;
     private String workSchedule;
     private String contactNumber;
     private String email;
+    private String status;
 
     // Constructor
-    public Doctor(int id, String name, String specialty, String workSchedule, String contactNumber, String email) {
+    public Doctor(int id, String name, int specialtyID, String workSchedule, String contactNumber, String email , String status) {
         this.id = id;
         this.name = name;
-        this.specialty = specialty;
+        this.specialtyID = specialtyID;
         this.workSchedule = workSchedule;
         this.contactNumber = contactNumber;
         this.email = email;
+        this.status = "Active";
+
     }
 
     // Getter and Setter methods
@@ -40,12 +44,12 @@ public class Doctor {
         this.name = name;
     }
 
-    public String getSpecialty() {
-        return specialty;
+    public int getSpecialtyID() {
+        return specialtyID;
     }
 
-    public void setSpecialty(String specialty) {
-        this.specialty = specialty;
+    public void setSpecialtyID(int specialtyID) {
+        this.specialtyID = specialtyID;
     }
 
     public String getWorkSchedule() {
@@ -73,19 +77,14 @@ public class Doctor {
     }
 
     // Kết nối đến cơ sở dữ liệu MySQL
-    private static Connection getConnection() throws SQLException {
-        String url = "jdbc:mysql://localhost:3306/hospitalmanagement"; // Thay "your_database_name" với tên cơ sở dữ liệu của bạn
-        String user = "root"; // Tên người dùng của cơ sở dữ liệu (thường là "root")
-        String password = ""; // Mật khẩu của người dùng
-        return DriverManager.getConnection(url, user, password);
-    }
+
 
     // Lấy danh sách bác sĩ
     public static ObservableList<Doctor> getDoctors() {
         ObservableList<Doctor> doctorList = FXCollections.observableArrayList();
         String query = "SELECT * FROM doctor"; // Thay đổi bảng và cột cho phù hợp
 
-        try (Connection connection = getConnection();
+        try (Connection connection = DatabaseConnection.getConnection();
              Statement stmt = connection.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
 
@@ -93,10 +92,11 @@ public class Doctor {
                 doctorList.add(new Doctor(
                         rs.getInt("doctorID"),
                         rs.getString("name"),
-                        rs.getString("specialty"),
+                        rs.getInt("specialtyID"),
                         rs.getString("workSchedule"),
                         rs.getString("contactNumber"),
-                        rs.getString("email")
+                        rs.getString("email"),
+                        rs.getString("status")
                 ));
             }
         } catch (SQLException e) {
@@ -107,12 +107,12 @@ public class Doctor {
 
     // Thêm bác sĩ
     public static boolean addDoctor(Doctor doctor) {
-        String query = "INSERT INTO doctor (name, specialty, workSchedule, contactNumber, email) VALUES (?, ?, ?, ?, ?)";
-        try (Connection connection = getConnection();
+        String query = "INSERT INTO doctor (name, specialtyID, workSchedule, contactNumber, email , status) VALUES (?, ?, ?, ?, ?, 'Active')";
+        try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {
 
             pstmt.setString(1, doctor.getName());
-            pstmt.setString(2, doctor.getSpecialty());
+            pstmt.setInt(2, doctor.getSpecialtyID());
             pstmt.setString(3, doctor.getWorkSchedule());
             pstmt.setString(4, doctor.getContactNumber());
             pstmt.setString(5, doctor.getEmail());
@@ -127,12 +127,12 @@ public class Doctor {
 
     // Cập nhật bác sĩ
     public static boolean updateDoctor(Doctor doctor) {
-        String query = "UPDATE doctor SET name = ?, specialty = ?, workSchedule = ?, contactNumber = ?, email = ? WHERE doctorID = ?";
-        try (Connection connection = getConnection();
+        String query = "UPDATE doctor SET name = ?, specialtyID = ?, workSchedule = ?, contactNumber = ?, email = ? WHERE doctorID = ?";
+        try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {
 
             pstmt.setString(1, doctor.getName());
-            pstmt.setString(2, doctor.getSpecialty());
+            pstmt.setInt(2, doctor.getSpecialtyID());
             pstmt.setString(3, doctor.getWorkSchedule());
             pstmt.setString(4, doctor.getContactNumber());
             pstmt.setString(5, doctor.getEmail());
@@ -149,7 +149,7 @@ public class Doctor {
     // Xóa bác sĩ
     public static boolean deleteDoctor(int doctorId) {
         String query = "DELETE FROM doctor WHERE doctorID = ?";
-        try (Connection connection = getConnection();
+        try (Connection connection = DatabaseConnection.getConnection();
              PreparedStatement pstmt = connection.prepareStatement(query)) {
 
             pstmt.setInt(1, doctorId);

@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" stylesheets="/Frame.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddDoctorController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="810.0" prefWidth="1315.0" stylesheets="/Frame.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AddApointmentController">
     <left>
         <fx:include source="../Sidebar.fxml" />
     </left>
@@ -14,12 +14,8 @@
             <fx:include source="../Header.fxml" />
             <HBox style="-fx-background-color: #FFFFFF">
                 <children>
-
                     <!-- Thêm tiêu đề cho bảng -->
                     <Label alignment="CENTER" prefHeight="56.0" prefWidth="1197.0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-padding: 10px;-fx-background-color: #FFFFFF;" text="" />
-
-
-                    
                 </children>
             </HBox>
 
@@ -28,27 +24,21 @@
                 <children>
                     <VBox alignment="CENTER" spacing="20" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="20.0">
                         <!-- Tiêu đề -->
-                        <Label style="-fx-font-size: 30; -fx-font-weight: bold;" text="ADD Doctor" />
+                        <Label style="-fx-font-size: 30; -fx-font-weight: bold;" text="ADD Appointment" />
 
                         <!-- Các trường nhập liệu -->
-                        <TextField fx:id="doctorNameField" layoutX="100.0" layoutY="75.0" prefHeight="35.0" promptText="Name" />
-                        <ComboBox fx:id="specialtyComboBox" layoutX="100.0" layoutY="125.0" prefHeight="35.0" prefWidth="1216.0" promptText="Specialty" />
-                        <TextField fx:id="doctorScheduledField" layoutX="100.0" layoutY="275.0" prefHeight="35.0" promptText="Work Schedule" />
-                        <TextField fx:id="doctorContactField" layoutX="100.0" layoutY="175.0" prefHeight="35.0" promptText="Contact" />
-                        <TextField fx:id="doctorEmailField" layoutX="100.0" layoutY="225.0" prefHeight="35.0" promptText="email " />
+                        <TextField fx:id="PatientID" layoutX="100.0" layoutY="75.0" prefHeight="35.0" promptText="Patient ID" />
+                        <TextField fx:id="Symptoms" layoutX="100.0" layoutY="275.0" prefHeight="35.0" promptText="Symptoms" />
+                        <DatePicker fx:id="ScheduledTime" layoutX="100.0" layoutY="175.0" prefHeight="35.0" promptText="Scheduled Time" />
+
                         <!-- Phần chứa nút bấm -->
                         <HBox alignment="CENTER" spacing="50">
                             <Button fx:id="addButton" prefHeight="35.0" prefWidth="100.0" text="Add" />
                             <Button fx:id="cancelButton" prefHeight="35.0" prefWidth="100.0" text="Cancel" />
                         </HBox>
                     </VBox>
-
                 </children>
             </AnchorPane>
-            <BorderPane.margin>
-                <Insets />
-            </BorderPane.margin>
-
         </VBox>
     </center>
 </BorderPane>

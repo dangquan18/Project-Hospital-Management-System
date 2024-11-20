@@ -37,3 +37,12 @@ VBox {
 .button:hover {
     -fx-background-color: #388e3c;
 }
+.combo-box {
+    -fx-background-color: white; /* Nền trắng cho ComboBox */
+    -fx-border-color: linear-gradient(to bottom right, #188ba7, #306090); /* Màu viền cho ComboBox */
+    -fx-border-radius: 30; /* Bo tròn viền */
+    -fx-background-radius: 30; /* Bo tròn nền */
+    -fx-pref-height: 35px; /* Chiều cao mặc định cho ComboBox */
+    -fx-padding: 5px 20px 5px 20px; /* Khoảng cách padding trong ComboBox */
+    -fx-font-size: 14px; /* Kích thước font chữ */
+}

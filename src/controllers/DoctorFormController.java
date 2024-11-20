@@ -18,6 +18,8 @@ import javafx.fxml.FXMLLoader;
 
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 public class DoctorFormController {
     @FXML
@@ -37,25 +39,37 @@ public class DoctorFormController {
     @FXML
     private TableColumn<Doctor, String> doctors_col_action;
     @FXML
-
-
+    List <String> specialtyList = List.of("","Nội khoa","Ngoại khoa","Sản phụ khoa","Nhi khoa","Khoa mắt");
+    Map<String, Integer> specialtyMap = Map.of("Nội khoa", 1, "Ngoại khoa", 2, "Sản phụ khoa", 3, "Nhi khoa", 4,"Khoa mắt",5);
     private ObservableList<Doctor> doctorList = FXCollections.observableArrayList();
 
     @FXML
     public void initialize() {
 
         doctorsTableView.setEditable(true);
+
+        // Sử dụng PropertyValueFactory cho các cột khác
         doctors_col_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         doctors_col_name.setCellValueFactory(new PropertyValueFactory<>("name"));
-        doctors_col_specialty.setCellValueFactory(new PropertyValueFactory<>("specialty"));
         doctors_col_workSchedule.setCellValueFactory(new PropertyValueFactory<>("workSchedule"));
         doctors_col_contactNumber.setCellValueFactory(new PropertyValueFactory<>("contactNumber"));
         doctors_col_email.setCellValueFactory(new PropertyValueFactory<>("email"));
 
-        setUpEditCommitHandlers(); // Enable editing for columns
-        setUpActionColumn(); // Setup action column with delete button
+        // Sử dụng CellValueFactory tùy chỉnh cho cột specialty
+        doctors_col_specialty.setCellValueFactory(cellData -> {
+            Integer specialtyID = cellData.getValue().getSpecialtyID();  // Lấy specialtyID từ Doctor
+            String specialtyName = specialtyMap.entrySet().stream()
+                    .filter(entry -> Objects.equals(entry.getValue(), specialtyID))  // Tìm chuyên khoa tương ứng với specialtyID
+                    .map(Map.Entry::getKey)  // Lấy tên chuyên khoa từ specialtyMap
+                    .findFirst()
+                    .orElse("");  // Nếu không tìm thấy thì trả về chuỗi rỗng
+            return new javafx.beans.property.SimpleStringProperty(specialtyName);  // Trả về tên chuyên khoa dưới dạng SimpleStringProperty
+        });
 
-        loadDoctorData(); // Load initial doctor data
+        setUpEditCommitHandlers(); // Bật chế độ chỉnh sửa cho các cột
+        setUpActionColumn(); // Cài đặt cột hành động với nút xóa
+
+        loadDoctorData(); // Tải dữ liệu bác sĩ ban đầu
     }
 
 
@@ -73,6 +87,7 @@ public class DoctorFormController {
                         if (empty) {
                             setGraphic(null);
                         } else {
+                            deleteButton.setStyle("-fx-background-color: #f44336; ");
                             deleteButton.setOnAction(event -> {
                                 Doctor doctor = getTableView().getItems().get(getIndex());
                                 handleDeleteDoctor(doctor);
@@ -108,7 +123,14 @@ public class DoctorFormController {
         if (newValue != null && !newValue.trim().isEmpty()) {
             switch (field) {
                 case "name": doctor.setName(newValue); break;
-                case "specialty": doctor.setSpecialty(newValue); break;
+                case "specialty":
+                    Integer specialtyID = specialtyMap.get(newValue);
+                    if (specialtyID != null) {
+                        doctor.setSpecialtyID(specialtyID);  // Cập nhật với ID thay vì tên
+                    } else {
+                        showErrorDialog("Invalid Specialty", "The selected specialty is not valid.");
+                    }
+                    break;
                 case "workSchedule": doctor.setWorkSchedule(newValue); break;
                 case "contactNumber": doctor.setContactNumber(newValue); break;
                 case "email": doctor.setEmail(newValue); break;
@@ -118,8 +140,6 @@ public class DoctorFormController {
             if (Doctor.updateDoctor(doctor)) {
                 System.out.println("Doctor updated successfully: " + doctor);
                 doctorsTableView.refresh();
-            } else {
-                showErrorDialog("Update Failed", "Failed to update the doctor information.");
             }
         } else {
             showErrorDialog("Invalid Input", "The value cannot be empty or whitespace.");
@@ -132,14 +152,6 @@ public class DoctorFormController {
     }
 
     @FXML
-    private void handleAddDoctor() {
-        Doctor newDoctor = new Doctor(0, "New Doctor", "Specialty", "Work Schedule", "Contact", "email@example.com");
-        if (Doctor.addDoctor(newDoctor)) {
-            loadDoctorData();
-        } else {
-            showErrorDialog("Add Failed", "Failed to add new doctor.");
-        }
-    }
 
     private void handleDeleteDoctor(Doctor doctor) {
         if (doctor != null && Doctor.deleteDoctor(doctor.getId())) {

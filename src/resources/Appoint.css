@@ -1,0 +1,55 @@
+/* Cấu hình chung cho TabPane */
+.tab-pane {
+    -fx-background-color: #FFFFFF; /* Màu nền của TabPane */
+    -fx-border-color: #E0E0E0; /* Viền nhẹ */
+    -fx-border-width: 1px;
+    -fx-background-radius: 8px; /* Làm mềm góc */
+    -fx-pref-width: 1200px; /* Chiều rộng cố định */
+    -fx-pref-height: 600px; /* Chiều cao cố định */
+}
+
+/* Cấu hình căn giữa cho các tab */
+.tab-bar {
+    -fx-alignment: center; /* Căn giữa các tab */
+    -fx-spacing: 30px; /* Khoảng cách giữa các tab */
+}
+
+/* Tùy chỉnh các tab */
+.tab {
+    -fx-background-color: #F0F0F0; /* Màu nền của các tab */
+    -fx-text-fill: #555555; /* Màu chữ tab */
+    -fx-font-size: 16px; /* Kích thước chữ */
+    -fx-font-family: "Segoe UI", sans-serif; /* Font chữ đẹp */
+    -fx-padding: 10px 20px; /* Khoảng cách trong tab */
+    -fx-border-radius: 5px; /* Bo góc nhẹ cho tab */
+    -fx-effect: innershadow(gaussian, #dddddd, 5, 0, 0, 2); /* Hiệu ứng bóng cho tab */
+}
+
+/* Tab đang được chọn */
+.tab:selected {
+    -fx-background-color: #4CAF50; /* Màu nền của tab khi được chọn */
+    -fx-text-fill: white; /* Màu chữ khi tab được chọn */
+    -fx-font-weight: bold; /* Đậm chữ khi tab được chọn */
+    -fx-effect: dropshadow( gaussian, #000000, 5, 0.5, 0, 1 ); /* Hiệu ứng bóng đổ */
+}
+
+/* Hover khi di chuột qua tab */
+.tab:hover {
+    -fx-background-color: #C8E6C9; /* Màu nền khi hover */
+    -fx-text-fill: #333333; /* Màu chữ khi hover */
+    -fx-cursor: hand; /* Thay đổi con trỏ chuột */
+}
+
+/* Ẩn dấu "X" (nút đóng tab) */
+.tab .tab-close-button {
+    -fx-opacity: 0; /* Ẩn nút đóng */
+    -fx-background-color: transparent; /* Làm trong suốt nền của nút */
+}
+
+/* Tùy chỉnh content của Tab */
+.tab .content {
+    -fx-padding: 20px;
+    -fx-background-color: #F9F9F9; /* Nền sáng cho content */
+    -fx-border-radius: 5px; /* Bo góc cho content */
+    -fx-effect: innershadow(gaussian, #DDDDDD, 8, 0, 0, 2); /* Hiệu ứng bóng nhẹ cho content */
+}

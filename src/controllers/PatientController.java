@@ -75,19 +75,25 @@ public class PatientController {
                 return new TableCell<>() {
                     private final Button deleteButton = new Button("Delete");
 
+
                     @Override
                     protected void updateItem(String item, boolean empty) {
                         super.updateItem(item, empty);
                         if (empty) {
                             setGraphic(null);
                         } else {
+                            deleteButton.setStyle("-fx-background-color: #f44336; ");
                             deleteButton.setOnAction(event -> {
                                 Patient patient = getTableView().getItems().get(getIndex());
                                 handleDeletePatient(patient);
+
                             });
 
-                            HBox hbox = new HBox(10, deleteButton);
+
+
+                            HBox hbox = new HBox(10, deleteButton );
                             setGraphic(hbox);
+
                         }
                     }
                 };
@@ -165,6 +171,7 @@ public class PatientController {
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Error loading FXML file.");
+
         }
     }
 }

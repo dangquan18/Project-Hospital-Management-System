@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF" VBox.vgrow="ALWAYS" fx:controller="controllers.AppointmentController">
+    <TableView fx:id="AppointTableView" prefHeight="600.0" prefWidth="1200.0" stylesheets="@/resources/MainDoctor.css" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="AppointID" prefWidth="200.0" text="Appointment ID" />
+            <TableColumn fx:id="AppointPatientName" prefWidth="200.0" text=" Patient Name" />
+            <TableColumn fx:id="AppointSymptoms" prefWidth="250.0" text="Symptoms" />
+            <TableColumn fx:id="AppointSheduledTime" prefWidth="250.0" text="Scheduled Time" />
+            <TableColumn fx:id="AppointAction" prefWidth="300.0" text="Action">
+
+            </TableColumn>
+        </columns>
+    </TableView>
+</AnchorPane>

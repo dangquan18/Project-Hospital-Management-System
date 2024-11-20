@@ -2,8 +2,6 @@ package controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -35,7 +33,7 @@ public class SidebarController {
         dashboardButton.setOnAction(event -> loadPage("/views/Dashboard/DashBoardForm.fxml"));
         doctorsButton.setOnAction(event -> loadPage("/views/Dashboard/DoctorForm.fxml"));
         patientsButton.setOnAction(event -> loadPage("/views/Dashboard/PatientForm.fxml"));
-        appointmentButton.setOnAction(event -> loadPage("/views/Dashboard/AppoitmentForm.fxml"));
+        appointmentButton.setOnAction(event -> loadPage("/views/Dashboard/AppointmentForm.fxml"));
         medicalRecordsButton.setOnAction(event -> loadPage("/views/Dashboard/MedicalRecordForm.fxml"));
         doctorHistoryButton.setOnAction(event -> loadPage("/views/Dashboard/DoctorHistoryForm.fxml"));
     }

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane stylesheets="/Appoint.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ApFormController">
+    <left>
+        <fx:include source="../Sidebar.fxml" />
+    </left>
+    <center>
+        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="TOP_CENTER">
+            <!-- Phần Header -->
+            <fx:include source="../Header.fxml" />
+
+            <!-- Thêm tiêu đề cho bảng -->
+            <HBox style="-fx-background-color: #FFFFFF">
+                <children>
+
+                    <!-- Thêm tiêu đề cho bảng -->
+                    <Label prefHeight="56.0" prefWidth="500" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-padding: 10px;-fx-background-color: #FFFFFF;" text=" Appointment" />
+                    <Button fx:id="AppointButton" onAction="#senceAddForm" maxWidth="270.0" prefHeight="40.0" prefWidth="270.0" styleClass="navbar-button" stylesheets="@/resources/MainDoctor.css" text="Add Appointment">
+                        <graphic>
+                            <ImageView fitHeight="20" fitWidth="20" preserveRatio="true">
+                                <image>
+                                    <Image url="@/add.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+
+                    </Button>
+                </children>
+            </HBox>
+
+
+            <!-- Phần TableView hiển thị danh sách bác sĩ -->
+            <TabPane prefHeight="600.0" prefWidth="1200.0">
+                <!-- Tab 1: Danh sách lịch hẹn -->
+                <Tab text="Lịch chưa phân công">
+                    <content>
+                        <fx:include source="AppointmentAssign.fxml" />
+                    </content>
+                </Tab>
+                <Tab text="Lịch đã phân công">
+                    <content>
+                        <fx:include source="AppointmentList.fxml" />
+
+                    </content>
+                </Tab>
+            </TabPane>
+
+            <BorderPane.margin>
+                <Insets />
+            </BorderPane.margin>
+
+        </VBox>
+    </center>
+</BorderPane>

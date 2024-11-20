@@ -64,7 +64,7 @@ public class Patient {
 
     // Kết nối đến cơ sở dữ liệu MySQL
     private static Connection getConnection() throws SQLException {
-        String url = "jdbc:mysql://localhost:3306/hospitalmanagement"; // Thay "your_database_name" với tên cơ sở dữ liệu của bạn
+        String url = "jdbc:mysql://localhost:3306/hospital_management"; // Thay "your_database_name" với tên cơ sở dữ liệu của bạn
         String user = "root"; // Tên người dùng của cơ sở dữ liệu (thường là "root")
         String password = ""; // Mật khẩu của người dùng
         return DriverManager.getConnection(url, user, password);

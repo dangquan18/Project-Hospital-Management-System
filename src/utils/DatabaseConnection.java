@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    private static final String URL = "jdbc:mysql://localhost:3306/hospitalmanagement";
+    private static final String URL = "jdbc:mysql://localhost:3306/hospital_management";
     private static final String USER = "root";
     private static final String PASSWORD = "";
 
@@ -17,7 +17,7 @@ public class DatabaseConnection {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hospitalmanagement", "root", "");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/hospital_management", "root", "");
         } catch (ClassNotFoundException var2) {
             ClassNotFoundException e = var2;
             System.out.println("MySQL JDBC Driver not found.");
