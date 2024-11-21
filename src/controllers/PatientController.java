@@ -42,7 +42,6 @@ public class PatientController {
 
     @FXML
     public void initialize() {
-        addPatientButton.setOnAction(event -> loadPage("/views/Dashboard/AddPatientForm.fxml"));
         PatientTableView.setEditable(true);
         patients_col_patientID.setCellValueFactory(new PropertyValueFactory<>("id"));
         patients_col_name.setCellValueFactory(new PropertyValueFactory<>("name"));

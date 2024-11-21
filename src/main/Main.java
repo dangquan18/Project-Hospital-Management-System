@@ -14,7 +14,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.getIcons().add(new Image(Objects.requireNonNull(getClass().getResourceAsStream("/resources/icon_app.png"))));
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/Dashboard/DoctorForm.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/login/Login.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
 

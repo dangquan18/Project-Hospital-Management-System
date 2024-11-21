@@ -11,6 +11,7 @@ import model.Appointment;
 import utils.DatabaseConnection;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -117,15 +118,40 @@ public class AppointmentListController {
     }
 
     private void handleDeleteAppointment(Appointment appointment) {
-        try {
-            if (appointment != null && Appointment.deleteAppointment(appointment.getAppointmentID())) {
-                loadAppointments();
-            } else {
-                showErrorDialog("Delete Failed", "Failed to delete Appointment.");
+        String getDoctorIdQuery = "SELECT doctorID FROM appointment WHERE appointmentID = ?";
+        String updateDoctorStatusQuery = "UPDATE doctor SET status = 'Active' WHERE doctorID = ?";
+        String deleteAppointmentQuery = "DELETE FROM appointment WHERE appointmentID = ?";
+
+        try (Connection connection = DatabaseConnection.getConnection();
+             PreparedStatement getDoctorIdStmt = connection.prepareStatement(getDoctorIdQuery);
+             PreparedStatement updateDoctorStatusStmt = connection.prepareStatement(updateDoctorStatusQuery);
+             PreparedStatement deleteAppointmentStmt = connection.prepareStatement(deleteAppointmentQuery)) {
+
+            // 1. Lấy doctorID từ appointmentID
+            getDoctorIdStmt.setInt(1, appointment.getAppointmentID());
+            ResultSet rs = getDoctorIdStmt.executeQuery();
+            int doctorID = -1;
+            if (rs.next()) {
+                doctorID = rs.getInt("doctorID");
             }
-        } catch (Exception e) {
+
+            // 2. Cập nhật trạng thái bác sĩ thành 'Active' nếu tìm thấy doctorID
+            if (doctorID != -1) {
+                updateDoctorStatusStmt.setInt(1, doctorID);
+                updateDoctorStatusStmt.executeUpdate();
+            }
+
+            // 3. Xóa cuộc hẹn
+            deleteAppointmentStmt.setInt(1, appointment.getAppointmentID());
+            deleteAppointmentStmt.executeUpdate();
+
+            // 4. Cập nhật giao diện TableView
+            appointments.remove(appointment);
+            AppointListTableView.refresh();
+
+            System.out.println("Appointment deleted and doctor set to active.");
+        } catch (SQLException e) {
             e.printStackTrace();
-            showErrorDialog("Database Error", "An error occurred while accessing the database.");
         }
     }
 
