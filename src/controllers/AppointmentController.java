@@ -133,23 +133,7 @@ public class AppointmentController {
             e.printStackTrace();
         }
     }
-    private void openAssignForm(Appointment appointment) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Views/Dashboard/Assign.fxml"));
-            Parent root = loader.load();
 
-            // Lấy controller của form Assign và truyền appointmentID
-            AssignDoctorController controller = loader.getController();
-            controller.setAppointmentID(appointment.getAppointmentID());
-
-            Stage currentStage = (Stage) AppointTableView.getScene().getWindow();
-            Scene newScene = new Scene(root);
-            currentStage.setScene(newScene);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
     @FXML
 
     private void handleDeleteAppointment(Appointment appointment) {

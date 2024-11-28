@@ -31,7 +31,6 @@
                         <Label style="-fx-font-size: 30; -fx-font-weight: bold;" text="ADD Medical Record" />
 
                         <!-- Các trường nhập liệu -->
-                        <TextField fx:id="AppointmentIDField" layoutX="100.0" layoutY="75.0" prefHeight="35.0" promptText="AppointmentID" />
                         <TextField fx:id="diagnosisField" layoutX="100.0" layoutY="275.0" prefHeight="35.0" promptText="Diagnosis" />
                         <TextField fx:id="treatmentField" layoutX="100.0" layoutY="175.0" prefHeight="35.0" promptText="Treatment" />
                         <TextField fx:id="resultField" layoutX="100.0" layoutY="225.0" prefHeight="35.0" promptText="Result" />

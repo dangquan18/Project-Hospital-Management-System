@@ -48,6 +48,12 @@
 
                     </content>
                 </Tab>
+                <Tab text="Lịch đã hoàn thành">
+                    <content>
+                        <fx:include source="CompletedAP.fxml" />
+
+                    </content>
+                </Tab>
             </TabPane>
 
             <BorderPane.margin>

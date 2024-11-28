@@ -8,12 +8,11 @@ import javafx.stage.Stage;
 import model.MedicalRecord;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 public class AddMedicalRecordController {
 
-    @FXML
-    private TextField AppointmentIDField;
+    private int appointmentID; // Biến lưu appointmentID được truyền vào
+
     @FXML
     private TextField diagnosisField;
     @FXML
@@ -26,19 +25,21 @@ public class AddMedicalRecordController {
     @FXML
     private Button cancelButton;
 
-
-    // Hàm thiết lập controller MedicalRecordController để quay lại trang danh sách
+    // Phương thức khởi tạo
     public void initialize() {
-
         addButton.setOnAction(event -> addMedicalRecord());
         cancelButton.setOnAction(event -> cancelAdd());
+    }
+
+    // Setter để nhận appointmentID từ CompletedController
+    public void setAppointmentID(int appointmentID) {
+        this.appointmentID = appointmentID;
     }
 
     // Sự kiện thêm hồ sơ bệnh án
     @FXML
     public void addMedicalRecord() {
         try {
-            int appointmentID = Integer.parseInt(AppointmentIDField.getText());
             String diagnosis = diagnosisField.getText();
             String treatment = treatmentField.getText();
             String result = resultField.getText();
@@ -50,37 +51,29 @@ public class AddMedicalRecordController {
             }
 
             // Thêm hồ sơ bệnh án mới vào cơ sở dữ liệu
-            MedicalRecord newRecord = new MedicalRecord(0, appointmentID, "", "", null,diagnosis,treatment,result);
+            MedicalRecord newRecord = new MedicalRecord(0, appointmentID, "", "", null, diagnosis, treatment, result);
             boolean isAdded = newRecord.addMedicalRecord();
 
             if (isAdded) {
                 showAlert(Alert.AlertType.INFORMATION, "Success", "Medical Record added successfully.");
-                goToMedicalList();
-                cancelAdd();  // Đóng form thêm hồ sơ bệnh án
+                goToMedicalList(); // Đóng form
             } else {
                 showAlert(Alert.AlertType.ERROR, "Error", "Failed to add Medical Record.");
             }
 
-        } catch (NumberFormatException e) {
-            showAlert(Alert.AlertType.WARNING, "Invalid Input", "Appointment ID must be a number.");
         } catch (Exception e) {
             e.printStackTrace();
             showAlert(Alert.AlertType.ERROR, "Database Error", "An error occurred while accessing the database.");
         }
     }
 
-    // Sự kiện hủy thêm hồ sơ bệnh án và quay lại trang MedicalRecordForm
+    // Sự kiện hủy và đóng form
     @FXML
-    private void cancelAdd() {
-        AppointmentIDField.clear();
-        diagnosisField.clear();
-        treatmentField.clear();
-        resultField.clear();
-        // Quay lại trang MedicalRecordForm (sử dụng phương thức openAddMedicalRecordForm trong MedicalRecordController)
-    }
 
 
-    // Hàm hiển thị hộp thoại thông báo
+    // Đóng cửa sổ hiện tại
+
+    // Hiển thị thông báo
     private void showAlert(Alert.AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);
@@ -101,5 +94,10 @@ public class AddMedicalRecordController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //
-}}
+    }
+    private void cancelAdd() {
+        diagnosisField.clear();
+        treatmentField.clear();
+        resultField.clear();
+    }
+}
