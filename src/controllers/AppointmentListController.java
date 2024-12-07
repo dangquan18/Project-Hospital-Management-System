@@ -169,35 +169,39 @@
         }
         private void handleCompleteAppointment(Appointment appointment) {
             String updateAppointmentStatusQuery = "UPDATE appointment SET status = 'Completed' WHERE appointmentID = ?";
+            String updateDoctorStatusQuery = "UPDATE doctor SET status = 'Active' WHERE doctorID = ?";
             String insertDoctorHistoryQuery = "INSERT INTO doctorhistory (doctorID, appointmentID) VALUES (?, ?)";
 
             try (Connection connection = DatabaseConnection.getConnection();
                  PreparedStatement updateAppointmentStmt = connection.prepareStatement(updateAppointmentStatusQuery);
+                 PreparedStatement updateDoctorStatusStmt = connection.prepareStatement(updateDoctorStatusQuery);
                  PreparedStatement insertDoctorHistoryStmt = connection.prepareStatement(insertDoctorHistoryQuery)) {
-
-                System.out.println("Appointment ID: " + appointment.getAppointmentID());
 
                 // 1. Cập nhật trạng thái cuộc hẹn thành "Completed"
                 updateAppointmentStmt.setInt(1, appointment.getAppointmentID());
                 updateAppointmentStmt.executeUpdate();
                 System.out.println("Updated appointment status to 'Completed'.");
 
-                // 2. Thêm bản ghi vào bảng `doctorhistory`
+                // 2. Lấy doctorID từ appointment
                 int doctorId = getDoctorIdByAppointment(appointment.getAppointmentID());
-                System.out.println("Doctor ID: " + doctorId);
-
                 if (doctorId == -1) {
                     System.out.println("Doctor ID not found.");
                     showErrorDialog("Error", "Doctor ID not found for this appointment.");
                     return;
                 }
 
+                // 3. Cập nhật trạng thái bác sĩ thành "Active"
+                updateDoctorStatusStmt.setInt(1, doctorId);
+                updateDoctorStatusStmt.executeUpdate();
+                System.out.println("Doctor status set to 'Active'.");
+
+                // 4. Thêm bản ghi vào bảng doctorhistory
                 insertDoctorHistoryStmt.setInt(1, doctorId);
                 insertDoctorHistoryStmt.setInt(2, appointment.getAppointmentID());
                 insertDoctorHistoryStmt.executeUpdate();
                 System.out.println("Inserted doctor history record.");
 
-                // 3. Tải lại danh sách cuộc hẹn từ cơ sở dữ liệu
+                // 5. Tải lại danh sách cuộc hẹn từ cơ sở dữ liệu
                 loadAppointments();
                 System.out.println("Appointments reloaded.");
 
